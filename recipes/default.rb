@@ -44,7 +44,7 @@ else
   firewall_rule "ssh" do
     port 22
     action :allow
-  end
+  end if node['firewall']['provision_default_ssh']
 
   node['firewall']['rules'].each do |rule_mash|
     Chef::Log.debug "ufw:rule \"#{rule_mash}\""
